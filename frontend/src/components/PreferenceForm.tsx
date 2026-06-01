@@ -1,6 +1,6 @@
 "use client";
 
-import { Minus, Plus, Sparkles } from "lucide-react";
+import { ChevronDown, MapPin, Minus, Plus, Search, Sparkles } from "lucide-react";
 import { useCallback, useState } from "react";
 import type { BudgetUi, FormState } from "@/types";
 
@@ -36,24 +36,29 @@ export function PreferenceForm({
 
   return (
     <form
+      id="discover"
       onSubmit={handleSubmit}
-      className="rounded-[20px] border border-white/[0.08] bg-[rgba(22,22,28,0.85)] p-6 shadow-[0_24px_48px_rgba(0,0,0,0.35)] sm:p-7"
+      className="rounded-[24px] border border-accent/15 bg-[#18181B]/90 p-6 shadow-[0_28px_70px_rgba(0,0,0,0.45)] backdrop-blur sm:p-7"
     >
       <div className="grid gap-6 md:grid-cols-2 md:gap-8">
         <div className="space-y-5">
           <Field label="Area">
-            <select
-              value={location}
-              onChange={(e) => setLocation(e.target.value)}
-              className={inputClass}
-              required
-            >
-              {locations.map((loc) => (
-                <option key={loc} value={loc}>
-                  {loc}
-                </option>
-              ))}
-            </select>
+            <div className="relative">
+              <MapPin className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-accent" />
+              <select
+                value={location}
+                onChange={(e) => setLocation(e.target.value)}
+                className={`${inputClass} appearance-none pl-10 pr-10`}
+                required
+              >
+                {locations.map((loc) => (
+                  <option key={loc} value={loc}>
+                    {loc}
+                  </option>
+                ))}
+              </select>
+              <ChevronDown className="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-500" />
+            </div>
           </Field>
 
           <Field label="Budget range">
@@ -65,8 +70,8 @@ export function PreferenceForm({
                   onClick={() => setBudget(opt)}
                   className={`flex-1 rounded-xl border px-4 py-2.5 text-sm font-medium transition ${
                     budget === opt
-                      ? "border-gray-200 bg-gray-100 text-gray-900"
-                      : "border-border-muted bg-surface-input text-gray-400 hover:border-gray-600"
+                      ? "border-accent bg-accent text-black shadow-[0_0_22px_rgba(252,128,25,0.28)]"
+                      : "border-white/10 bg-[#121212] text-gray-400 hover:border-accent/40 hover:text-gray-200"
                   }`}
                 >
                   {opt}
@@ -76,13 +81,16 @@ export function PreferenceForm({
           </Field>
 
           <Field label="Preferred cuisines">
-            <input
-              type="text"
-              value={cuisine}
-              onChange={(e) => setCuisine(e.target.value)}
-              placeholder="Search or select cuisines… (e.g. Italian, North Indian)"
-              className={inputClass}
-            />
+            <div className="relative">
+              <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-accent" />
+              <input
+                type="text"
+                value={cuisine}
+                onChange={(e) => setCuisine(e.target.value)}
+                placeholder="Search cuisines... (e.g. Italian, North Indian)"
+                className={`${inputClass} pl-10`}
+              />
+            </div>
           </Field>
         </div>
 
@@ -96,16 +104,16 @@ export function PreferenceForm({
                 step={0.1}
                 value={minRating}
                 onChange={(e) => setMinRating(parseFloat(e.target.value))}
-                className="h-1.5 flex-1 cursor-pointer appearance-none rounded-full bg-border-muted accent-accent"
+                className="h-1.5 flex-1 cursor-pointer appearance-none rounded-full bg-white/10 accent-accent"
               />
               <span className="min-w-[3.5rem] text-right text-lg font-semibold text-white">
-                {minRating.toFixed(1)} ★
+                {minRating.toFixed(1)} star
               </span>
             </div>
           </Field>
 
           <Field label="Number of results">
-            <div className="flex items-center gap-0 overflow-hidden rounded-xl border border-border-muted bg-surface-input">
+            <div className="flex items-center gap-0 overflow-hidden rounded-xl border border-white/10 bg-[#121212]">
               <button
                 type="button"
                 onClick={() => setTopK((k) => Math.max(1, k - 1))}
@@ -132,7 +140,7 @@ export function PreferenceForm({
             <textarea
               value={additional}
               onChange={(e) => setAdditional(e.target.value)}
-              placeholder="Describe your perfect dining experience…"
+              placeholder="Describe your perfect dining experience..."
               rows={4}
               className={`${inputClass} resize-none`}
             />
@@ -143,10 +151,10 @@ export function PreferenceForm({
       <button
         type="submit"
         disabled={loading}
-        className="mt-6 flex w-full items-center justify-center gap-2 rounded-[14px] bg-gradient-to-b from-[#f0f0f2] to-[#d4d4d8] py-3.5 text-base font-bold text-gray-900 shadow-[0_4px_20px_rgba(255,255,255,0.12)] transition hover:from-white hover:to-[#e4e4e7] disabled:cursor-not-allowed disabled:opacity-60"
+        className="mt-6 flex w-full items-center justify-center gap-2 rounded-[16px] bg-accent py-4 text-base font-black text-black shadow-[0_0_32px_rgba(252,128,25,0.32)] transition hover:-translate-y-0.5 hover:shadow-[0_0_44px_rgba(252,128,25,0.56)] disabled:cursor-not-allowed disabled:opacity-60"
       >
         <Sparkles className="h-4 w-4" />
-        {loading ? "Finding restaurants…" : "Get AI Recommendations"}
+        {loading ? "Finding restaurants..." : "Discover Dining"}
       </button>
     </form>
   );
@@ -155,7 +163,7 @@ export function PreferenceForm({
 function Field({ label, children }: { label: string; children: React.ReactNode }) {
   return (
     <div>
-      <label className="mb-2 block text-[0.7rem] font-semibold uppercase tracking-[0.08em] text-gray-500">
+      <label className="mb-2 block text-[0.7rem] font-semibold uppercase tracking-[0.08em] text-gray-400">
         {label}
       </label>
       {children}
@@ -164,4 +172,4 @@ function Field({ label, children }: { label: string; children: React.ReactNode }
 }
 
 const inputClass =
-  "w-full rounded-xl border border-border-muted bg-surface-input px-4 py-2.5 text-sm text-gray-100 placeholder:text-gray-600 focus:border-accent/50 focus:outline-none focus:ring-1 focus:ring-accent/30";
+  "w-full rounded-xl border border-white/10 bg-[#121212] px-4 py-2.5 text-sm text-gray-100 placeholder:text-gray-600 shadow-inner shadow-black/20 focus:border-accent/70 focus:outline-none focus:ring-2 focus:ring-accent/20";

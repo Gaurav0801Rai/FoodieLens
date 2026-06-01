@@ -23,17 +23,17 @@ export function ResultsSection({ response }: ResultsSectionProps) {
     <section className="mt-10">
       {Boolean(meta.fallback_used) && (
         <div className="mb-4 rounded-xl border border-amber-500/30 bg-amber-500/10 px-4 py-3 text-sm text-amber-200">
-          AI ranking was unavailable — showing top-rated matches from your filters.
+          AI ranking was unavailable - showing top-rated matches from your filters.
         </div>
       )}
 
       {summary && (
-        <div className="mb-6 rounded-xl border border-accent/25 bg-accent-muted px-5 py-4 text-sm leading-relaxed text-cyan-100/90">
+        <div className="mb-6 rounded-xl border border-accent/25 bg-accent-muted px-5 py-4 text-sm leading-relaxed text-orange-100/90 shadow-[0_0_30px_rgba(252,128,25,0.12)]">
           {summary}
         </div>
       )}
 
-      <h2 className="mb-5 text-2xl font-bold tracking-tight text-white">Your recommendations</h2>
+      <h2 className="mb-5 text-2xl font-bold tracking-normal text-white">Your recommendations</h2>
 
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {recommendations.map((rec) => (
@@ -46,19 +46,19 @@ export function ResultsSection({ response }: ResultsSectionProps) {
         <dl className="mt-3 space-y-1">
           <div>
             <dt className="inline font-medium text-gray-500">Candidates considered: </dt>
-            <dd className="inline">{String(meta.candidates_considered ?? "—")}</dd>
+            <dd className="inline">{String(meta.candidates_considered ?? "-")}</dd>
           </div>
           <div>
             <dt className="inline font-medium text-gray-500">Sent to AI: </dt>
-            <dd className="inline">{String(meta.candidates_sent_to_llm ?? "—")}</dd>
+            <dd className="inline">{String(meta.candidates_sent_to_llm ?? "-")}</dd>
           </div>
           <div>
             <dt className="inline font-medium text-gray-500">Filter time: </dt>
-            <dd className="inline">{String(meta.filter_latency_ms ?? "—")} ms</dd>
+            <dd className="inline">{String(meta.filter_latency_ms ?? "-")} ms</dd>
           </div>
           <div>
             <dt className="inline font-medium text-gray-500">AI time: </dt>
-            <dd className="inline">{String(meta.llm_latency_ms ?? "—")} ms</dd>
+            <dd className="inline">{String(meta.llm_latency_ms ?? "-")} ms</dd>
           </div>
         </dl>
       </details>

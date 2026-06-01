@@ -54,7 +54,7 @@ export default function HomePage() {
   }, []);
 
   return (
-    <main className="mx-auto min-h-screen max-w-[1100px] px-4 py-8 pb-16 sm:px-6">
+    <main className="mx-auto min-h-screen max-w-[1120px] px-4 py-8 pb-16 sm:px-6">
       <Nav />
       <Hero />
 

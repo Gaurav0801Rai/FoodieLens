@@ -6,18 +6,22 @@ const config: Config = {
     extend: {
       colors: {
         surface: {
-          DEFAULT: "#14141c",
-          elevated: "#1a1a22",
-          card: "#14141c",
-          input: "#121218",
+          DEFAULT: "#18181b",
+          elevated: "#202024",
+          card: "#18181b",
+          input: "#121212",
         },
         border: {
-          DEFAULT: "#252530",
-          muted: "#2a2a35",
+          DEFAULT: "rgba(252, 128, 25, 0.18)",
+          muted: "rgba(224, 224, 224, 0.12)",
         },
         accent: {
-          DEFAULT: "#22d3ee",
-          muted: "rgba(34, 211, 238, 0.12)",
+          DEFAULT: "#FC8019",
+          muted: "rgba(252, 128, 25, 0.14)",
+        },
+        highlight: {
+          teal: "#2DD4BF",
+          purple: "#A78BFA",
         },
       },
       fontFamily: {
@@ -25,7 +29,7 @@ const config: Config = {
       },
       backgroundImage: {
         "page-gradient":
-          "radial-gradient(ellipse 120% 80% at 50% -20%, #1a1a24 0%, #0a0a0f 45%, #060608 100%)",
+          "radial-gradient(ellipse 120% 80% at 50% -20%, rgba(252, 128, 25, 0.16) 0%, rgba(18, 18, 18, 0.96) 38%, #050505 100%)",
       },
     },
   },
