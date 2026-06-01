@@ -1,0 +1,3 @@
+# Streamlit Community Cloud (see docs/deployment-plan.md).
+-r requirements-core.txt
+streamlit>=1.32.0
