@@ -10,7 +10,7 @@ export const theme = {
     secondaryPurple: "#A78BFA",
   },
   typography: {
-    fontFamily: "var(--font-inter), system-ui, sans-serif",
+    fontFamily: "Inter, system-ui, Segoe UI, sans-serif",
     letterSpacing: "0",
   },
 } as const;
