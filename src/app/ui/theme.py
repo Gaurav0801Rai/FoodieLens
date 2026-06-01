@@ -1,4 +1,4 @@
-"""TasteTrail AI dark theme — global Streamlit CSS."""
+"""FoodieLens dark theme — global Streamlit CSS."""
 
 from __future__ import annotations
 
@@ -366,7 +366,7 @@ def render_nav() -> None:
         """
         <div class="tt-nav">
             <div class="tt-nav-icon">🍴</div>
-            <span class="tt-nav-title">TasteTrail AI</span>
+            <span class="tt-nav-title">FoodieLens</span>
         </div>
         """,
         unsafe_allow_html=True,
@@ -377,9 +377,9 @@ def render_hero() -> None:
     st.markdown(
         """
         <div class="tt-hero">
-            <div class="tt-badge">✦ DISCOVER THE FUTURE OF DINING</div>
-            <h1>TasteTrail <span class="muted">AI</span></h1>
-            <p>Personalized restaurant discovery powered by AI and real-world dining preferences.</p>
+            <div class="tt-badge">✦ AI-POWERED DINING</div>
+            <h1>FoodieLens</h1>
+            <p>Discover dining through the lens of flavor.</p>
         </div>
         """,
         unsafe_allow_html=True,

@@ -1,5 +1,5 @@
 """
-Streamlit entry point — TasteTrail AI restaurant recommendations.
+Streamlit entry point — FoodieLens restaurant recommendations.
 
 Run from project root:
     PYTHONPATH=src streamlit run src/app/main.py
@@ -115,7 +115,7 @@ def _show_validation_errors(exc: ValidationError) -> None:
 
 def main() -> None:
     st.set_page_config(
-        page_title="TasteTrail AI",
+        page_title="FoodieLens",
         page_icon="🍴",
         layout="wide",
         initial_sidebar_state="collapsed",

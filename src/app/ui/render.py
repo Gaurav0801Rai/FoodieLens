@@ -1,4 +1,4 @@
-"""Presentation helpers for TasteTrail AI recommendation results."""
+"""Presentation helpers for FoodieLens recommendation results."""
 
 from __future__ import annotations
 

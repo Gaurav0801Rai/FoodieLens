@@ -1,6 +1,6 @@
-# Zomato AI Restaurant Recommendation
+# FoodieLens
 
-AI-powered restaurant recommendations using the Zomato Hugging Face dataset and an LLM.
+Discover dining through the lens of flavor. AI-powered restaurant recommendations using the Zomato Hugging Face dataset and an LLM.
 
 ## Setup
 
@@ -125,7 +125,7 @@ npm install
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000). The TasteTrail AI UI matches the designs in `design/image1.png` (preference form) and `design/image2.png` (results grid).
+Open [http://localhost:3000](http://localhost:3000). The FoodieLens UI matches the designs in `design/image1.png` (preference form) and `design/image2.png` (results grid).
 
 | Endpoint | Description |
 |----------|-------------|

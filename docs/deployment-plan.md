@@ -1,6 +1,6 @@
 # Deployment Plan — Railway (Backend) + Vercel (Frontend)
 
-Deploy **TasteTrail AI** as a split stack:
+Deploy **FoodieLens** as a split stack:
 
 | Layer | Platform | What runs |
 |-------|----------|-----------|
@@ -131,7 +131,7 @@ In **Variables** (or **Shared Variables**):
 **CORS example** (after Vercel is deployed):
 
 ```text
-CORS_ALLOWED_ORIGINS=https://tastetrail.vercel.app,https://tastetrail-*.vercel.app,http://localhost:3000
+CORS_ALLOWED_ORIGINS=https://foodielens.vercel.app,https://foodielens-*.vercel.app,http://localhost:3000
 ```
 
 > `api/main.py` reads `CORS_ALLOWED_ORIGINS` via `settings.cors_origin_list` in `app/config.py`. Without your Vercel URL in this list, the browser will block API calls.
@@ -330,8 +330,8 @@ See [`.env.example`](../.env.example) for local development.
 The root `Dockerfile` is used automatically via `railway.toml`. To build locally:
 
 ```bash
-docker build -t tastetrail-api .
-docker run -p 8000:8000 -e LLM_API_KEY="gsk_..." -e PORT=8000 tastetrail-api
+docker build -t foodielens-api .
+docker run -p 8080:8080 -e LLM_API_KEY="gsk_..." -e PORT=8080 foodielens-api
 ```
 
 ---

@@ -1,5 +1,5 @@
 """
-FastAPI backend for TasteTrail AI.
+FastAPI backend for FoodieLens.
 
 Run from project root:
     python -m uvicorn api.main:app --reload --port 8080
@@ -67,7 +67,7 @@ async def lifespan(_app: FastAPI):
 
 
 app = FastAPI(
-    title="TasteTrail AI API",
+    title="FoodieLens API",
     version="1.0.0",
     description="Restaurant recommendations powered by Zomato data and Groq LLM",
     lifespan=lifespan,
@@ -88,7 +88,7 @@ app.add_middleware(CORSMiddleware, **_cors_kwargs)
 @app.get("/")
 def root() -> dict[str, str]:
     return {
-        "service": "TasteTrail AI API",
+        "service": "FoodieLens API",
         "docs": "/docs",
         "health": "/api/v1/health",
     }
