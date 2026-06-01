@@ -12,6 +12,15 @@ import { BUDGET_UI_TO_API } from "@/types";
 
 type PageStatus = "idle" | "loading" | "results" | "error";
 
+const FALLBACK_LOCATIONS = [
+  "Bellandur",
+  "Indiranagar",
+  "Koramangala",
+  "Whitefield",
+  "HSR",
+  "Jayanagar",
+];
+
 export default function HomePage() {
   const [locations, setLocations] = useState<string[]>([]);
   const [locationsError, setLocationsError] = useState<string | null>(null);
@@ -22,7 +31,10 @@ export default function HomePage() {
   useEffect(() => {
     fetchLocations()
       .then(setLocations)
-      .catch((e) => setLocationsError(e instanceof Error ? e.message : "Failed to load areas"));
+      .catch((e) => {
+        setLocations(FALLBACK_LOCATIONS);
+        setLocationsError(e instanceof Error ? e.message : "Failed to load areas");
+      });
   }, []);
 
   const defaultLocation =
